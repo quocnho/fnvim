@@ -97,7 +97,7 @@ local function load_options()
 		wildignorecase = true,
 		winminwidth = 10,
 		winwidth = 30,
-		wrap = false,
+		wrap = true,
 		wrapscan = true,
 		writebackup = false,
 	}

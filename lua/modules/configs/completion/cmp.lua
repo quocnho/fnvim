@@ -78,8 +78,8 @@ return function()
 		sorting = {
 			priority_weight = 2,
 			comparators = {
-				require("copilot_cmp.comparators").prioritize,
-				require("copilot_cmp.comparators").score,
+				-- require("copilot_cmp.comparators").prioritize,
+				-- require("copilot_cmp.comparators").score,
 				-- require("cmp_tabnine.compare"),
 				compare.offset, -- Items closer to cursor will have lower priority
 				compare.exact,

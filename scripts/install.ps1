@@ -267,6 +267,7 @@ function fetch_deps {
 	check_and_fetch_exec -PkgName "wget"
 	check_and_fetch_exec -PkgName "rustc"
 	check_and_fetch_exec -PkgName "sqlite3"
+	check_and_fetch_exec -PkgName "im-select"
 	check_and_fetch_exec -PkgName "tree-sitter"
 
 	# Reload PATH for future use

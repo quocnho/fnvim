@@ -6,6 +6,12 @@ local map_callback = bind.map_callback
 local et = bind.escape_termcode
 
 local plug_map = {
+	-- System mapping
+	["i|<C-c>"] = map_cmd("<Esc>"):with_noremap():with_silent():with_desc("terminal: Esc"),
+	["i|<C-v>"] = map_cmd("<C-o>P"):with_noremap():with_silent():with_desc("edit: Paste to cursor"),
+	["n|<BS>"] = map_cmd("%"):with_noremap():with_silent():with_desc("edit: Jump to paren"),
+	["n|<TAB>"] = map_cu("Telescope buffers"):with_noremap():with_silent():with_desc("find: Buffer opened"),
+
 	-- Plugin: accelerate-jk
 	["n|j"] = map_callback(function()
 		return et("<Plug>(accelerated_jk_gj)")

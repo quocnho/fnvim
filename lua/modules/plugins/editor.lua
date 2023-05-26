@@ -6,7 +6,7 @@ editor["rainbowhxch/accelerated-jk.nvim"] = {
 	config = require("editor.accelerated-jk"),
 }
 editor["rmagatti/auto-session"] = {
-	tag='v2.0.1',
+	tag = "v2.0.1",
 	lazy = true,
 	cmd = { "SessionSave", "SessionRestore", "SessionDelete" },
 	config = require("editor.auto-session"),
