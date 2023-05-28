@@ -41,12 +41,12 @@ return function()
 
 	local leader = " "
 	dashboard.section.buttons.val = {
-		button("o", " File frecency", leader, nil, {
+		button("p", " Project find", leader, nil, {
 			noremap = true,
 			silent = true,
 			nowait = true,
 			callback = function()
-				require("telescope").extensions.frecency.frecency()
+				require("telescope").extensions.projects.projects({})
 			end,
 		}),
 		button("r", "󰋚 File history", leader, nil, {
@@ -57,28 +57,28 @@ return function()
 				require("telescope.builtin").oldfiles()
 			end,
 		}),
-		button("p", " Project find", leader, nil, {
-			noremap = true,
-			silent = true,
-			nowait = true,
-			callback = function()
-				require("telescope").extensions.projects.projects({})
-			end,
-		}),
-		button("c", " Scheme change", leader, nil, {
-			noremap = true,
-			silent = true,
-			nowait = true,
-			callback = function()
-				require("telescope.builtin").colorscheme()
-			end,
-		}),
 		button("f", "󰈞 File find", leader, nil, {
 			noremap = true,
 			silent = true,
 			nowait = true,
 			callback = function()
 				require("telescope.builtin").find_files()
+			end,
+		}),
+		-- button("c", " Scheme change", leader, nil, {
+		-- 	noremap = true,
+		-- 	silent = true,
+		-- 	nowait = true,
+		-- 	callback = function()
+		-- 		require("telescope.builtin").colorscheme()
+		-- 	end,
+		-- }),
+		button("c", " " .. " Config", leader, nil, {
+			noremap = true,
+			silent = true,
+			nowait = true,
+			callback = function()
+				vim.api.nvim_command(":e $MYVIMRC")
 			end,
 		}),
 		button("n", " File new", leader, nil, {
@@ -103,15 +103,7 @@ return function()
 	local function footer()
 		local stats = require("lazy").stats()
 		local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-		return "   Have a nice day!"
-			.. "  󰀨 v"
-			.. "  󰂖 "
-			.. stats.loaded
-			.. " / "
-			.. stats.count
-			.. " plugins in "
-			.. ms
-			.. "ms"
+		return "Have a nice day!" .. "  󰂖 " .. stats.loaded .. " / " .. stats.count .. " plugins in " .. ms .. "ms"
 	end
 
 	dashboard.section.footer.val = footer()

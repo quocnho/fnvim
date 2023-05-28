@@ -11,6 +11,42 @@ editor["rmagatti/auto-session"] = {
 	cmd = { "SessionSave", "SessionRestore", "SessionDelete" },
 	config = require("editor.auto-session"),
 }
+editor["nvim-orgmode/orgmode"] = {
+	lazy = true,
+	ft = "org",
+	dependencies = {
+		{
+			"akinsho/org-bullets.nvim",
+			lazy = true,
+			config = function()
+				require("org-bullets").setup()
+			end,
+		},
+	},
+	config = require("editor.orgmode"),
+}
+
+editor["joaomsa/telescope-orgmode.nvim"] = {
+	lazy = true,
+}
+editor["tpope/vim-repeat"] = {
+	event = { "CmdlineEnter" },
+	keys = { "<Plug>(RepeatDot)", "<Plug>(RepeatUndo)", "<Plug>(RepeatRedo)" },
+
+	init = function()
+		vim.fn["repeat#set"] = function(...)
+			vim.fn["repeat#set"] = nil
+			require("lazy").load({ plugins = { "vim-repeat" } })
+			return vim.fn["repeat#set"](...)
+		end
+	end,
+	lazy = true,
+}
+editor["lukas-reineke/headlines.nvim"] = {
+	lazy = true,
+	dependencies = "nvim-treesitter/nvim-treesitter",
+	config = require("editor.headlines"),
+}
 editor["m4xshen/autoclose.nvim"] = {
 	lazy = true,
 	event = "InsertEnter",

@@ -148,6 +148,7 @@ return function()
 			{ name = "nvim_lsp", max_item_count = 350 },
 			{ name = "nvim_lua" },
 			{ name = "luasnip" },
+			{ name = "orgmode" },
 			{ name = "path" },
 			{
 				name = "treesitter",
