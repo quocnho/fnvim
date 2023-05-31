@@ -44,6 +44,109 @@ tool["mg979/vim-visual-multi"] = {
   ]])
 	end,
 }
+tool["gnikdroy/projections.nvim"] = {
+	lazy = true,
+	event = "BufWinEnter",
+	keys = {
+		{
+			"<leader>pf",
+			function()
+				local telescope_status, telescope = pcall(require, "telescope")
+
+				if not telescope_status then
+					vim.notify("projections: cannot open telescope", vim.log.levels.ERROR)
+
+					return
+				end
+
+				if not package.loaded["telescope._extensions.projections"] then
+					telescope.load_extension("projections")
+				end
+
+				telescope.extensions.projections.projections()
+			end,
+			desc = "General: [f]ind the workspace [p]rojects",
+		},
+	},
+	init = function()
+		-- If vim was started with arguments, do nothing
+		-- If in some project's root, attempt to restore that project's session
+		-- If not, restore last session
+		-- If no sessions, do nothing
+		local Session = require("projections.session")
+		vim.api.nvim_create_user_command("StoreProjectSession", function()
+			Session.store(vim.loop.cwd())
+		end, {})
+
+		vim.api.nvim_create_user_command("RestoreProjectSession", function()
+			Session.restore(vim.loop.cwd())
+		end, {})
+		vim.api.nvim_create_autocmd({ "VimEnter" }, {
+			callback = function()
+				if vim.fn.argc() ~= 0 then
+					return
+				end
+				local session_info = Session.info(vim.loop.cwd())
+				if session_info == nil then
+					Session.restore_latest()
+				else
+					Session.restore(vim.loop.cwd())
+				end
+			end,
+			desc = "Restore last session automatically",
+		})
+		vim.api.nvim_create_autocmd("VimLeavePre", {
+			callback = function(ev)
+				if
+					vim.tbl_contains({
+						"git",
+						"gitcommit",
+						"gitrebase",
+					}, vim.api.nvim_get_option_value("filetype", { buf = ev.buf }))
+				then
+					return
+				end
+
+				require("projections.session").store(vim.loop.cwd())
+			end,
+		})
+		-- Autostore session on VimExit
+		vim.api.nvim_create_autocmd({ "VimLeavePre" }, {
+			callback = function()
+				Session.store(vim.loop.cwd())
+			end,
+		})
+
+		-- Switch to project if vim was started in a project dir
+		local switcher = require("projections.switcher")
+		vim.api.nvim_create_autocmd({ "VimEnter" }, {
+			callback = function()
+				if vim.fn.argc() == 0 then
+					switcher.switch(vim.loop.cwd())
+				end
+			end,
+		})
+	end,
+	config = function()
+		require("projections").setup({
+			workspaces = {
+				{ "D:\\OneDrive - dada\\Projects", { ".git" } },
+				{ "~/Developer/workspace/code", { ".git", "package.json" } },
+			},
+			patterns = { ".git", "package.json" },
+			store_hooks = {
+				pre = function()
+					if package.loaded["aerial"] then
+						vim.api.nvim_command("AerialCloseAll")
+					end
+					if package.loaded["neo-tree"] then
+						vim.api.nvim_command("Neotree close")
+					end
+				end,
+			},
+		})
+	end,
+}
 tool["keaising/im-select.nvim"] = {
 	lazy = true,
 	event = "BufReadPost",

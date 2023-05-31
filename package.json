@@ -1,0 +1,18 @@
+[
+    {
+        "path": "/path/to/workspace",
+        "patterns": [
+            "list",
+            "of",
+            "patterns"
+        ]
+    },
+    {
+        "path": "/tmp",
+        "patterns": [
+            ".git",
+            ".svn",
+            ".hg"
+        ]
+    }
+]
