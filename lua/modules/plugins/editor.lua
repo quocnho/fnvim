@@ -5,30 +5,30 @@ editor["rainbowhxch/accelerated-jk.nvim"] = {
 	event = "VeryLazy",
 	config = require("editor.accelerated-jk"),
 }
-editor["rmagatti/auto-session"] = {
-	tag = "v2.0.1",
-	lazy = true,
-	cmd = { "SessionSave", "SessionRestore", "SessionDelete" },
-	config = require("editor.auto-session"),
-}
-editor["nvim-orgmode/orgmode"] = {
-	lazy = true,
-	ft = "org",
-	dependencies = {
-		{
-			"akinsho/org-bullets.nvim",
-			lazy = true,
-			config = function()
-				require("org-bullets").setup()
-			end,
-		},
-	},
-	config = require("editor.orgmode"),
-}
+-- editor["rmagatti/auto-session"] = {
+-- 	tag = "v2.0.1",
+-- 	lazy = true,
+-- 	cmd = { "SessionSave", "SessionRestore", "SessionDelete" },
+-- 	config = require("editor.auto-session"),
+-- }
+-- editor["nvim-orgmode/orgmode"] = {
+-- 	lazy = true,
+-- 	ft = "org",
+-- 	dependencies = {
+-- 		{
+-- 			"akinsho/org-bullets.nvim",
+-- 			lazy = true,
+-- 			config = function()
+-- 				require("org-bullets").setup()
+-- 			end,
+-- 		},
+-- 	},
+-- 	config = require("editor.orgmode"),
+-- }
 
-editor["joaomsa/telescope-orgmode.nvim"] = {
-	lazy = true,
-}
+-- editor["joaomsa/telescope-orgmode.nvim"] = {
+-- 	lazy = true,
+-- }
 editor["tpope/vim-repeat"] = {
 	event = { "CmdlineEnter" },
 	keys = { "<Plug>(RepeatDot)", "<Plug>(RepeatUndo)", "<Plug>(RepeatRedo)" },

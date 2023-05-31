@@ -98,6 +98,11 @@ tool["nvim-tree/nvim-tree.lua"] = {
 	},
 	config = require("tool.nvim-tree"),
 }
+tool["ray-x/web-tools.nvim"] = {
+	lazy = true,
+	event = "BufReadPost",
+	config = require("tool.web-tools"),
+}
 tool["ibhagwan/smartyank.nvim"] = {
 	lazy = true,
 	event = "BufReadPost",
@@ -157,10 +162,10 @@ tool["nvim-telescope/telescope.nvim"] = {
 			config = require("tool.project"),
 		},
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-		{ "nvim-telescope/telescope-frecency.nvim", dependencies = {
-			{ "kkharji/sqlite.lua" },
-		} },
-		{ "jvgrootveld/telescope-zoxide" },
+		-- { "nvim-telescope/telescope-frecency.nvim", dependencies = {
+		-- 	{ "kkharji/sqlite.lua" },
+		-- } },
+		-- { "jvgrootveld/telescope-zoxide" },
 		{ "nvim-telescope/telescope-live-grep-args.nvim" },
 		{ "nvim-telescope/telescope-hop.nvim" },
 	},

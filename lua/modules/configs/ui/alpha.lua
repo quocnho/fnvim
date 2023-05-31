@@ -57,22 +57,6 @@ return function()
 				require("telescope.builtin").oldfiles()
 			end,
 		}),
-		button("f", "󰈞 File find", leader, nil, {
-			noremap = true,
-			silent = true,
-			nowait = true,
-			callback = function()
-				require("telescope.builtin").find_files()
-			end,
-		}),
-		-- button("c", " Scheme change", leader, nil, {
-		-- 	noremap = true,
-		-- 	silent = true,
-		-- 	nowait = true,
-		-- 	callback = function()
-		-- 		require("telescope.builtin").colorscheme()
-		-- 	end,
-		-- }),
 		button("c", " " .. " Config", leader, nil, {
 			noremap = true,
 			silent = true,
@@ -81,20 +65,12 @@ return function()
 				vim.api.nvim_command(":e $MYVIMRC")
 			end,
 		}),
-		button("n", " File new", leader, nil, {
+		button("q", "  Quit", leader, nil, {
 			noremap = true,
 			silent = true,
 			nowait = true,
 			callback = function()
-				vim.api.nvim_command("enew")
-			end,
-		}),
-		button("w", " Word find", leader, nil, {
-			noremap = true,
-			silent = true,
-			nowait = true,
-			callback = function()
-				require("telescope.builtin").live_grep()
+				vim.api.nvim_command(":qa")
 			end,
 		}),
 	}
