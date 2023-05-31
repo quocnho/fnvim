@@ -49,7 +49,7 @@ tool["gnikdroy/projections.nvim"] = {
 	event = "BufWinEnter",
 	keys = {
 		{
-			"<leader>pf",
+			"<leader>fp",
 			function()
 				local telescope_status, telescope = pcall(require, "telescope")
 
@@ -81,20 +81,20 @@ tool["gnikdroy/projections.nvim"] = {
 		vim.api.nvim_create_user_command("RestoreProjectSession", function()
 			Session.restore(vim.loop.cwd())
 		end, {})
-		vim.api.nvim_create_autocmd({ "VimEnter" }, {
-			callback = function()
-				if vim.fn.argc() ~= 0 then
-					return
-				end
-				local session_info = Session.info(vim.loop.cwd())
-				if session_info == nil then
-					Session.restore_latest()
-				else
-					Session.restore(vim.loop.cwd())
-				end
-			end,
-			desc = "Restore last session automatically",
-		})
+		-- vim.api.nvim_create_autocmd({ "VimEnter" }, {
+		-- 	callback = function()
+		-- 		if vim.fn.argc() ~= 0 then
+		-- 			return
+		-- 		end
+		-- 		local session_info = Session.info(vim.loop.cwd())
+		-- 		if session_info == nil then
+		-- 			Session.restore_latest()
+		-- 		else
+		-- 			Session.restore(vim.loop.cwd())
+		-- 		end
+		-- 	end,
+		-- 	desc = "Restore last session automatically",
+		-- })
 		vim.api.nvim_create_autocmd("VimLeavePre", {
 			callback = function(ev)
 				if

@@ -35,20 +35,7 @@ return function()
 			return _cache.context
 		end
 	end
-	local project_name_display = function()
-		local projections_available, Session = pcall(require, "projections.session")
-		if projections_available then
-			local info = Session.info(vim.loop.cwd())
-			if info ~= nil then
-				-- local session_file_path = tostring(info.path)
-				-- local project_workspace_patterns = info.project.workspace.patterns
-				-- local project_workspace_path = tostring(info.project.workspace)
-				local project_name = info.project.name
-				return "☺ " .. project_name
-			end
-		end
-		return vim.fs.basename(vim.loop.cwd())
-	end
+
 	local function diff_source()
 		local gitsigns = vim.b.gitsigns_status_dict
 		if gitsigns then
@@ -113,20 +100,7 @@ return function()
 		end
 		return ""
 	end
-	local project_name_display = function()
-		local projections_available, Session = pcall(require, "projections.session")
-		if projections_available then
-			local info = Session.info(vim.loop.cwd())
-			if info ~= nil then
-				-- local session_file_path = tostring(info.path)
-				-- local project_workspace_patterns = info.project.workspace.patterns
-				-- local project_workspace_path = tostring(info.project.workspace)
-				local project_name = info.project.name
-				return "☺ " .. project_name
-			end
-		end
-		return vim.fs.basename(vim.loop.cwd())
-	end
+
 	require("lualine").setup({
 		options = {
 			icons_enabled = true,
@@ -138,7 +112,7 @@ return function()
 		sections = {
 			lualine_a = { { "mode" } },
 			lualine_b = { { "branch" }, { "diff", source = diff_source } },
-			lualine_c = { { project_name_display }, { lspsaga_symbols } },
+			lualine_c = { lspsaga_symbols },
 			lualine_x = {
 				{ escape_status },
 				{

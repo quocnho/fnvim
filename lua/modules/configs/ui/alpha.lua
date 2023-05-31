@@ -46,7 +46,7 @@ return function()
 			silent = true,
 			nowait = true,
 			callback = function()
-				require("telescope").extensions.projects.projects({})
+				require("telescope").extensions.projections.projections()
 			end,
 		}),
 		button("r", "󰋚 File history", leader, nil, {
