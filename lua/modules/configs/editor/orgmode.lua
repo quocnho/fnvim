@@ -16,27 +16,27 @@ return function()
 	require("orgmode").setup({
 		org_agenda_files = { "~/OneDrive/Documents/org/*", "~/OneDrive/Documents/my-orgs/**/*" },
 		org_default_notes_file = "~/OneDrive/Documents/org/refile.org",
-		-- mappings = {
-		--   -- global = {
-		--   --   org_agenda = { "gA", "<Leader>oa" },
-		--   --   org_capture = { "gC", "<Leader>oc" },
-		--   -- },
-		--   -- agenda = {
-		--   --   org_agenda_later = ">",
-		--   --   org_agenda_earlier = "<",
-		--   --   org_agenda_goto_today = { ".", "T" },
-		--   -- },
-		--   -- capture = {
-		--   --   org_capture_finalize = "<Leader>w",
-		--   --   org_capture_refile = "R",
-		--   --   org_capture_kill = "Q",
-		--   -- },
-		--   --
-		--   -- note = {
-		--   --   org_note_finalize = "<Leader>w",
-		--   --   org_note_kill = "Q",
-		--   -- },
-		-- },
+		mappings = {
+			global = {
+				org_agenda = { "gA", "<Leader>oa" },
+				org_capture = { "gC", "<Leader>oc" },
+			},
+			agenda = {
+				org_agenda_later = ">",
+				org_agenda_earlier = "<",
+				org_agenda_goto_today = { ".", "T" },
+			},
+			capture = {
+				org_capture_finalize = "<Leader>w",
+				org_capture_refile = "R",
+				org_capture_kill = "Q",
+			},
+
+			note = {
+				org_note_finalize = "<Leader>w",
+				org_note_kill = "Q",
+			},
+		},
 		org_todo_keywords = {
 			"TODO",
 			"WIP",
@@ -66,7 +66,7 @@ return function()
 			},
 			m = {
 				description = "Meeting notes",
-				template = "#+TITLE: %?\n#+AUTHER: Ray\n#+TAGS: @metting \n#+DATE: %t\n\n*** %^{PROMPT|Meeting|LOGGING WGM} %U \n - %?\n<%<%Y-%m-%d %a %H:%M>>",
+				template = "#+TITLE: %?\n#+AUTHER: Tony Nguyễn\n#+TAGS: @metting \n#+DATE: %t\n\n*** %^{PROMPT|Meeting|LOGGING WGM} %U \n - %?\n<%<%Y-%m-%d %a %H:%M>>",
 			},
 			r = {
 				description = "Ritual",
@@ -81,7 +81,7 @@ return function()
 			j = {
 				description = "Journal",
 				template = "#+TITLE: %?\n#+TAGS: @journal \n#+DATE: %t\n",
-				target = string.format("~/OneDrive/org/journal/%s.org", vim.fn.strftime("%Y-%m-%d")),
+				target = string.format("~/OneDrive/Documents/org/journal/%s.org", vim.fn.strftime("%Y-%m-%d")),
 			},
 		},
 		notifications = {

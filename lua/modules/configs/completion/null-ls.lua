@@ -22,6 +22,7 @@ return function()
 				"javascriptreact",
 				"yaml",
 				"html",
+				"org",
 				"css",
 				"scss",
 				"sh",
