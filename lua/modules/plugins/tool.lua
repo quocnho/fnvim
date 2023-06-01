@@ -136,11 +136,15 @@ tool["gnikdroy/projections.nvim"] = {
 			patterns = { ".git", "package.json" },
 			store_hooks = {
 				pre = function()
-					if package.loaded["aerial"] then
-						vim.api.nvim_command("AerialCloseAll")
+					-- nvim-tree
+					local nvim_tree_present, api = pcall(require, "nvim-tree.api")
+					if nvim_tree_present then
+						api.tree.close()
 					end
-					if package.loaded["neo-tree"] then
-						vim.api.nvim_command("Neotree close")
+
+					-- neo-tree
+					if pcall(require, "neo-tree") then
+						vim.cmd([[Neotree action=close]])
 					end
 				end,
 			},
