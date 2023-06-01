@@ -1,5 +1,5 @@
 <div align="center">
-  <h1 align="center">fnvim</h1> 
+  <h1 align="center">Fnvim</h1> 
 	<a href="https://github.com/quocnho/fnvim/#features">✨ Features</a>
   <span> • </span>
 	<a href="https://github.com/quocnho/fnvim/#installation">📦 Installation</a>
@@ -10,7 +10,7 @@
   <p></p>
 </div>
 
-![fnvim Image](https://raw.githubusercontent.com/fnvim/fnvim/main/assets/screenshot.png)
+![fnvim Image](https://raw.githubusercontent.com/quocnho/fnvim/main/assets/screenshot.png)
 
 ## Introduction
 
@@ -49,13 +49,13 @@ This project is built to be:
 Make sure you have curl and bash installed before you run this script.
 
 ```bash
-curl -s https://raw.githubusercontent.com/fnvim/fnvim/main/install.sh | bash -s
+curl -s https://raw.githubusercontent.com/quocnho/fnvim/main/install.sh | bash -s
 ```
 
 ## Manual Installation
 
 ```
-git clone https://github.com/fnvim/fnvim ~/.config/nvim
+git clone https://github.com/quocnho/fnvim ~/.config/nvim
 nvim
 ```
 
