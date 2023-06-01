@@ -1,198 +1,186 @@
-<h1 align="center">
-    nvimdots
-    <br>
-    <a href="https://github.com/neovim/neovim/releases/tag/stable">
-    <img
-        alt="NeoVim Version Capability"
-        src="https://img.shields.io/badge/Supports%20Nvim-v0.9-A6D895?style=for-the-badge&colorA=363A4F&logo=neovim&logoColor=D9E0EE">
-    </a>
-    <a href="https://github.com/ayamir/nvimdots/releases">
-    <img
-        alt="Release"
-        src="https://img.shields.io/github/v/release/ayamir/nvimdots.svg?style=for-the-badge&logo=github&color=F2CDCD&logoColor=D9E0EE&labelColor=363A4F">
-    </a>
-</h1>
+# Fnvim Neovim
 
-<p align="center">
-    <a href="https://github.com/ayamir/nvimdots/stargazers">
-    <img
-        alt="Stars"
-        src="https://img.shields.io/github/stars/ayamir/nvimdots?colorA=363A4F&colorB=B7BDF8&logo=adafruit&logoColor=D9E0EE&style=for-the-badge">
-    </a>
-    <a href="https://github.com/ayamir/nvimdots/issues">
-    <img
-        alt="Issues"
-        src="https://img.shields.io/github/issues-raw/ayamir/nvimdots?colorA=363A4f&colorB=F5A97F&logo=github&logoColor=D9E0EE&style=for-the-badge">
-    </a>
-    <a href="https://github.com/ayamir/nvimdots/contributors">
-    <img
-        alt="Contributors"
-        src="https://img.shields.io/github/contributors/ayamir/nvimdots?colorA=363A4F&colorB=B5E8E0&logo=git&logoColor=D9E0EE&style=for-the-badge">
-    </a>
-    <img
-        alt="Code Size"
-        src="https://img.shields.io/github/languages/code-size/ayamir/nvimdots?colorA=363A4F&colorB=DDB6F2&logo=gitlfs&logoColor=D9E0EE&style=for-the-badge">
-</p>
+Fnvim is a blazing fast Lua config suited for Full Stack Golang, JS, Web development.
 
-## 🪷 Introduction
+## Showcase
 
-This repo hosts my [NeoVim](https://neovim.io/) configuration for Linux, macOS, and Windows. `init.lua` is the config entry point.
+<!-- <img src="./showcase/dashboard.png" alt="Dashboard" title="Dashboard"> -->
+<!-- <img src="./showcase/javacode.png" alt="Javacode" title="Javacode"> -->
+<!-- <img src="./showcase/xmlcode.png" alt="xmlcode" title="xmlcode"> -->
 
-Branch info:
+## Design Philosophy
 
-<div align="center">
+A lot of things have changed in the Neovim world since Fnvim's release, near a year ago.
+The most important change came recently, with the release of [lazy.nvim](https://github.com/folke/lazy.nvim).
 
-| Branch | Supported neovim version |
-| :----: | :----------------------: |
-|  main  |     nvim 0.9 stable      |
-|  0.8   |         nvim 0.8         |
-|  0.7   |         nvim 0.7         |
+Together with the migration to this package manager, I decided to implement fundamental design changes, which were inspired by the powerful config of [nvimdots](https://github.com/ayamir/nvimdots), which you should definitely check out.
 
-</div>
+I forked that config and adjusted it to Fnvim's design.
+I removed unneccesary plugins, made the keymaps much more intuitive, enhanced the functionality for Java development and implemented many ui changes.
 
-I use [lazy.nvim](https://github.com/folke/lazy.nvim) to manage plugins.
+The updated design principles of Fnvim.nvim are as follows:
 
-Chinese introduction is [here](https://zhuanlan.zhihu.com/p/382092667).
+- Gotta go fast. Startup and run-time performance are priorities.
+- Out-of-the-box complete. Just works with installation.
+- Configurable, but advanced code-base. Fnvim is not a framework, or a startup config.
+- Intuitive, consistent keybinding. f = find, s = search, b = buffer etc.
+- Not too opinionated. Striving for sane defaults wherever possible.
 
-### 🎐 Features
+## Features
 
-- **Fast.** Less than **30ms** to start (Depends on SSD and CPU, tested on Zephyrus G14 2022 version).
-- **Simple.** Run out of the box.
-- **Modern.** Pure `lua` config.
-- **Modular.** Easy to customize.
-- **Powerful.** Full functionality to code.
+- Native LSP and autocompletion
+- Syntax highlighting via nvim-treesitter
+- Java code runner with jaq
+- Java Unit Testing with vscode-java-test
+- Java Debugging via nvim-dap
+- Git integration with LazyGit and git-fugitive
+- Explore files via nvim-tree
+- Fuzzy finder via Telescope
+- Notes with Markdown
+- Blazing fast performance
 
-## 🏗 How to Install
+## Colorschemes
 
-Just run the following interactive bootstrap command, and you're good to go 👍
+Supported colorschemes are:
 
-- **Windows** _(Note: This script REQUIRES `pwsh` > `v7.1`)_
+<!-- 1. Default - [Vscode](https://github.com/Mofiqul/vscode.nvim). -->
+<!-- 2. [Catpuccin](https://github.com/catppuccin/nvim) -->
+<!-- 3. [LunarVim Colorschemes](https://github.com/LunarVim/Colorschemes) -->
+<!-- 4. [Nightfox](https://github.com/EdenEast/nightfox.nvim) -->
 
-```pwsh
-Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/ayamir/nvimdots/HEAD/scripts/install.ps1'))
+Feel free to add your own colorschemes.
+Most colorschemes will be compatible with Fnvim.
+
+## Dependencies
+
+For Fnvim.nvim to work as intended, you need to have the following dependencies installed:
+
+1. Neovim version >= 0.9.0
+2. Git 2.23+
+3. Ripgrep for telescope
+4. fd for telescope
+5. Nodejs
+6. Neovim node client (npm install -g neovim) - [neovim/node-client](https://github.com/neovim/node-client)
+7. "zig", "clang", or "gcc" executables to be able to compile treesitter parsers (check your package manager for one of these)
+8. Treesitter-cli nodejs module (Check your package manager for a treesitter or treesitter-cli package)
+9. Java 17+ (for Java LSP server)
+10. A font with nerdfont icons (my suggestion: <https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack>)
+
+NOTE: Run :checkhealth command to see what other dependencies you might be missing and to receive help if you have problems with installation.
+
+## Installation
+
+| Platform | Supported |
+| :------: | :-------: |
+| Windows  |    ✅     |
+|  macOS   |    ✅     |
+|  Linux   |    ✅     |
+
+1. Make sure to remove or move your current `nvim` directory (`~/.config/nvim`), if it exists.
+2. `git clone https://github.com/quocnho/fnvim.nvim`
+3. Copy or Move the `nvim` folder from the cloned fnvim.nvim project (not the fnvim.nvim folder!) to your `~/.config/` folder.
+   In the end, your folder should look like this: `~/.config/nvim`. Please note, depending on your OS, neovim might search for configuration in a different folder. In this case, run the `:checkhealth` command inside neovim, to see where it looks for configuration and place the nvim folder inside that.
+4. Run the `nvim` command and wait for the plugins to be installed.
+5. If some plugins fail to install at this point, don't be alarmed. Enter the `:qa!` command to exit neovim.
+6. Re-run the `nvim` command and enter `SPC p s` to update the package manager.
+7. Now all the plugins should have been installed. If some have not, run the `:checkhealth` command check the dependencies section above.
+8. Ready to go!
+
+## Project structure
+
+```shell
+fnvim.nvim
+├── LICENSE
+├── README.md
+└── nvim
+    ├── ftplugin
+    │   └── java.lua
+    ├── init.lua
+    ├── jars
+    │   ├── java-debug
+    │   │   └── com.microsoft.java.debug.plugin-0.44.0.jar
+    │   └── vscode-java-test
+    └── lua
+        ├── core
+        │   ├── autocommands.lua
+        │   ├── global.lua
+        │   ├── init.lua
+        │   ├── options.lua
+        │   ├── pack.lua
+        │   └── settings.lua
+        ├── keymaps
+        │   ├── init.lua
+        │   └── which-key.lua
+        └── modules
+            ├── configs
+            │   ├── completion
+            │   ├── editor
+            │   ├── lang
+            │   ├── tool
+            │   └── ui
+            ├── plugins
+            │   ├── completion.lua
+            │   ├── editor.lua
+            │   ├── lang.lua
+            │   ├── tool.lua
+            │   └── ui.lua
+            └── utils
+                ├── functions.lua
+                ├── icons.lua
+                └── init.lua
 ```
 
-- **\*nix**
+## Java Debugging and Testing
 
-```sh
-if command -v curl >/dev/null 2>&1; then
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/ayamir/nvimdots/HEAD/scripts/install.sh)"
-else
-    bash -c "$(wget -O- https://raw.githubusercontent.com/ayamir/nvimdots/HEAD/scripts/install.sh)"
-fi
+The jars required for Java debugging and testing are included in the jars folder.
+However, if you want to build them yourself from source, do the following:
+
+1. For Java Debug Plugin:
+
+```
+git clone https://github.com/microsoft/java-debug
+cd java-debug/
+./mvnw clean install
 ```
 
-It's strongly recommended to read [Wiki: Prerequisites](https://github.com/ayamir/nvimdots/wiki/Prerequisites) before starting, especially for \*nix users.
+2. For Java Testing:
 
-## ⚙️ Configuration & Usage
+```
+git clone https://github.com/Microsoft/vscode-java-test
+cd vscode-java-test
+npm install
+npm run build-plugin
+```
 
-<h3 align="center">
-    🗺️ Keybindings
-</h3>
-<p align="center">Refer to <a href="https://github.com/ayamir/nvimdots/wiki/Keybindings" rel="nofollow">Wiki: Keybindings</a></p>
-<br>
+## Java Multiple Runtimes
 
-<h3 align="center">
-    🔌 Plugins & Deps
-</h3>
-<p align="center">Refer to <a href="https://github.com/ayamir/nvimdots/wiki/Plugins" rel="nofollow">Wiki: Plugins</a> <br><em>(You can also find a deps diagram there!)</em></p>
-<br>
+In the file ftplugin/java.lua, you can setup your Java runtimes.
+The commented code for the runtimes is my own configuration.
+Feel free to adjust it to your preferences.
 
-<h3 align="center">
-    🔧 Usage & Customization
-</h3>
-<p align="center">Refer to <a href="https://github.com/ayamir/nvimdots/wiki/Usage" rel="nofollow">Wiki: Usage</a></p>
-<br>
+Here is the excerpt from ftplugin/java.lua with my own configuration:
 
-<h3 align="center">
-    🤔 FAQ
-</h3>
-<p align="center">Refer to <a href="https://github.com/ayamir/nvimdots/wiki/Issues" rel="nofollow">Wiki: FAQ</a></p>
+```lua
+configuration = {
+    updateBuildConfiguration = "interactive",
+    -- runtimes = {
+    --  {
+    --   name = "JavaSE-1.8",
+    --   path = "/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home",
+    --  },
+    --  {
+    --   name = "JavaSE-1.8",
+    --   path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_291.jdk/Contents/Home",
+    --  },
+    --  {
+    --   name = "JavaSE-11",
+    --   path = "/opt/homebrew/Cellar/openjdk@11/11.0.18/libexec/openjdk.jdk/Contents/Home",
+    --  },
+    --  {
+    --   name = "JavaSE-19",
+    --   path = "/opt/homebrew/Cellar/openjdk/19.0.2/libexec/openjdk.jdk/Contents/Home",
+    --  },
+    -- },
+                }
 
-## ✨ Features
-
-<h3 align="center">
-    ⏱️  Startup Time
-</h3>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/ayamir/blog-imgs/main/startuptime.png"
-  width = "80%"
-  alt = "StartupTime"
-  />
-</p>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/ayamir/blog-imgs/main/vimstartup.png"
-  width = "60%"
-  alt = "Vim-StartupTime"
-  />
-</p>
-
-> Tested with [rhysd/vim-startuptime](https://github.com/rhysd/vim-startuptime)
-
-<h3 align="center">
-    📸 Screenshots
-</h3>
-
-<p align="center">
-    <img src="https://raw.githubusercontent.com/ayamir/blog-imgs/main/dashboard.png" alt="Dashboard">
-    <em>Dashboard</em>
-</p>
-<br>
-
-<p align="center">
-    <img src="https://raw.githubusercontent.com/ayamir/blog-imgs/main/telescope.png" alt="Telescope">
-    <em>Telescope</em>
-</p>
-<br>
-
-<p align="center">
-    <img src="https://raw.githubusercontent.com/ayamir/blog-imgs/main/coding.png" alt="Coding">
-    <em>Coding</em>
-</p>
-<br>
-
-<p align="center">
-    <img src="https://raw.githubusercontent.com/ayamir/blog-imgs/main/dap.png" alt="Debugging">
-    <em>Debugging</em>
-</p>
-<br>
-
-<p align="center">
-    <img src="https://raw.githubusercontent.com/ayamir/blog-imgs/main/gitui.png" alt="Lazygit">
-    <em>Lazygit with built-in Terminal</em>
-</p>
-<br>
-
-<p align="center">
-    <img src="https://raw.githubusercontent.com/ayamir/blog-imgs/main/legendary.png" alt="Legendary">
-    <em>Command quickref</em>
-</p>
-
-## 👐 Contributing
-
-- If you find anything that needs improving, do not hesitate to point it out or create a PR.
-- If you come across an issue, you can first use `:checkhealth` command provided by nvim to trouble-shoot yourself.
-  - If you still have such problems, feel free to open a new issue!
-
-## ❤️ Thanks to
-
-- [ayamir](https://github.com/ayamir)
-- [Jint-lzxy](https://github.com/Jint-lzxy)
-- [CharlesChiuGit](https://github.com/CharlesChiuGit)
-
-## 🎉 Acknowledgement
-
-- [glepnir/nvim](https://github.com/glepnir/nvim)
-
-## 📜 License
-
-This NeoVim configuration is released under the MIT license, which grants the following permissions:
-
-- Commercial use
-- Distribution
-- Modification
-- Private use
-
-For more convoluted language, see the [LICENSE](https://github.com/ayamir/nvimdots/blob/main/LICENSE).
+```
