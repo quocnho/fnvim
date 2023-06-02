@@ -6,10 +6,23 @@ return function()
 		ui = require("modules.utils.icons").get("ui"),
 	}
 
+	--This is the modern method of modifying nvim-tree keymaps
+	-- Reference: https://github.com/nvim-tree/nvim-tree.lua/blob/master/doc/nvim-tree-lua.txt
+	local function my_on_attach(bufnr)
+		local api = require("nvim-tree.api")
+		local function opts(desc)
+			return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+		end
+		api.config.mappings.default_on_attach(bufnr)
+		-- your removals of default mappings and creation of new mappings go here
+		vim.keymap.set("n", "<Tab>", api.node.open.edit, opts("Open"))
+	end
+
 	require("nvim-tree").setup({
+		on_attach = my_on_attach,
 		auto_reload_on_write = true,
 		create_in_closed_folder = false,
-		disable_netrw = true,
+		disable_netrw = false,
 		hijack_cursor = true,
 		hijack_netrw = true,
 		hijack_unnamed_buffer_when_opening = true,
@@ -18,7 +31,7 @@ return function()
 		sort_by = "name",
 		sync_root_with_cwd = true,
 		view = {
-			adaptive_size = false,
+			adaptive_size = true,
 			centralize_selection = false,
 			width = 30,
 			side = "left",
@@ -26,6 +39,7 @@ return function()
 			number = false,
 			relativenumber = false,
 			signcolumn = "yes",
+			hide_root_folder = false,
 			float = {
 				enable = false,
 				open_win_config = {
@@ -40,7 +54,7 @@ return function()
 		},
 		renderer = {
 			add_trailing = false,
-			group_empty = true,
+			group_empty = false,
 			highlight_git = false,
 			full_name = false,
 			highlight_opened_files = "none",
@@ -55,7 +69,7 @@ return function()
 					none = "  ",
 				},
 			},
-			root_folder_label = ":.:s?.*?/..?",
+			-- root_folder_label = ":.:s?.*?/..?",
 			icons = {
 				webdev_colors = true,
 				git_placement = "before",
@@ -66,23 +80,23 @@ return function()
 					git = true,
 				},
 				padding = " ",
-				symlink_arrow = " 󰁔 ",
+				symlink_arrow = "  ",
 				glyphs = {
 					default = icons.documents.Default, --
 					symlink = icons.documents.Symlink, --
 					bookmark = icons.ui.Bookmark,
 					git = {
 						unstaged = icons.git.Mod_alt,
-						staged = icons.git.Add, --󰄬
+						staged = icons.git.Add, --
 						unmerged = icons.git.Unmerged,
-						renamed = icons.git.Rename, --󰁔
-						untracked = icons.git.Untracked, -- "󰞋"
+						renamed = icons.git.Rename, --
+						untracked = icons.git.Untracked, -- "ﲉ"
 						deleted = icons.git.Remove, --
 						ignored = icons.git.Ignore, --◌
 					},
 					folder = {
-						arrow_open = "",
-						arrow_closed = "",
+						-- arrow_open = "",
+						-- arrow_closed = "",
 						arrow_open = "",
 						arrow_closed = "",
 						default = icons.ui.Folder,
@@ -116,7 +130,7 @@ return function()
 				global = false,
 			},
 			open_file = {
-				quit_on_open = true,
+				quit_on_open = false,
 				resize_window = false,
 				window_picker = {
 					enable = true,

@@ -1,5 +1,4 @@
 local tool = {}
-
 tool["tpope/vim-fugitive"] = {
 	lazy = true,
 	cmd = { "Git", "G" },
@@ -205,24 +204,11 @@ tool["nvim-tree/nvim-tree.lua"] = {
 	},
 	config = require("tool.nvim-tree"),
 }
-tool["ray-x/web-tools.nvim"] = {
-	lazy = true,
-	event = "BufReadPost",
-	config = require("tool.web-tools"),
-}
 tool["ibhagwan/smartyank.nvim"] = {
 	lazy = true,
 	event = "BufReadPost",
 	config = require("tool.smartyank"),
 }
--- tool["michaelb/sniprun"] = {
--- 	lazy = true,
--- 	-- You need to cd to `~/.local/share/nvim/site/lazy/sniprun/` and execute `bash ./install.sh`,
--- 	-- if you encountered error about no executable sniprun found.
--- 	build = "bash ./install.sh",
--- 	cmd = { "SnipRun" },
--- 	config = require("tool.sniprun"),
--- }
 tool["akinsho/toggleterm.nvim"] = {
 	lazy = true,
 	cmd = {
@@ -244,6 +230,38 @@ tool["folke/which-key.nvim"] = {
 	lazy = true,
 	event = { "CursorHold", "CursorHoldI" },
 	config = require("tool.which-key"),
+}
+tool["nvim-neorg/neorg"] = {
+	lazy = true,
+	config = require("tool.neorg"),
+	ft = "norg",
+	cmd = { "Neorg" },
+	dependencies = {
+		{ "nvim-lua/plenary.nvim" },
+		{ "nvim-neorg/neorg-telescope" },
+		{ "max397574/neorg-contexts" },
+		{ "pysan3/neorg-templates", dependencies = { "L3MON4D3/LuaSnip" } },
+		{
+			"lukas-reineke/headlines.nvim",
+			dependencies = "nvim-treesitter/nvim-treesitter",
+			ft = { "markdown", "norg" },
+			config = function()
+				require("headlines").setup({
+					norg = {
+						headline_highlights = {
+							"Headline1",
+							"Headline2",
+							"Headline3",
+							"Headline4",
+							"Headline5",
+							"Headline6",
+						},
+						codeblock_highlight = { "NeorgCodeBlock" },
+					},
+				})
+			end,
+		},
+	},
 }
 tool["gelguy/wilder.nvim"] = {
 	lazy = true,
