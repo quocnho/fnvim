@@ -69,12 +69,8 @@ local plug_map = {
 	["n|<leader>tl"] = map_cr("TroubleToggle loclist"):with_noremap():with_silent():with_desc("lsp: Show loclist"),
 
 	-- Plugin: telescope
-	["n|<C-p>"] = map_callback(function()
-			_command_panel()
-		end)
-		:with_noremap()
-		:with_silent()
-		:with_desc("tool: Toggle command panel"),
+	["n|<C-p>"] = map_cu("Telescope find_files"):with_noremap():with_silent():with_desc("find: File by history"), 
+
 	["n|<leader>u"] = map_callback(function()
 			require("telescope").extensions.undo.undo()
 		end)

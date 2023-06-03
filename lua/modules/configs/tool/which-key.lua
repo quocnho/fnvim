@@ -80,7 +80,7 @@ return function()
 		["a"] = { ":Alpha", "Dashboard" },
 		["R"] = { ":%d+<cr>", "Remove All Text" },
 		["y"] = { ":%y+<cr>", "Yank All Text" },
-		["e"] = { ":NvimTreeToggle<cr>", "Tree Explorer" },
+		-- ["e"] = { ":NvimTreeToggle<cr>", "Tree Explorer" },
 
 		b = {
 			name = "Buffer",
@@ -113,7 +113,7 @@ return function()
 				"<cmd>Telescope find_files hidden=true no_ignore=true<cr>",
 				"Files",
 			},
-			p = { "<cmd>Telescope projects <CR>", "Projects" },
+			p = { name = "Project & Session" },
 			b = { "<cmd>Telescope buffers<cr>", "Buffers" },
 			h = { "<cmd>Telescope help_tags<cr>", "Help" },
 			r = { "<cmd>Telescope oldfiles<cr>", "Recent Files" },
@@ -149,27 +149,27 @@ return function()
 			b = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace in the current Buffer" },
 		},
 
-		j = {
-			name = "Java",
-			t = {
-				"<Cmd>lua require'jdtls'.test_nearest_method({ config = { console = 'console' }})<CR>",
-				"Test Method (without Maven)",
-			},
-			T = {
-				"<Cmd>lua require'jdtls'.test_class({ config = { console = 'console' }})<CR>",
-				"Test Class (without Maven)",
-			},
-			u = { "<Cmd>JdtUpdateConfig<CR>", "Update Config" },
-			d = { "<Cmd>JdtRefreshDebugConfigs<CR>", "Refresh debug config" },
-			r = { "<Cmd>Jaq<CR>", "Execute Java" },
-			R = { "<cmd>JdtWipeDataAndRestart<cr>", "Wipe project data and Restart server" },
-			x = { "<cmd>JdtRestart<cr>", "Restart server" },
-			v = { "<cmd>JdtSetRuntime<cr>", "Set runtime" },
-			s = {
-				":lua require('jdtls').setup_dap({ hotcodereplace = 'auto' })<cr>; :lua require'jdtls.dap'.setup_dap_main_class_configs()<cr>",
-				"Setup DAP Debugger",
-			},
-		},
+		-- j = {
+		-- 	name = "Java",
+		-- 	t = {
+		-- 		"<Cmd>lua require'jdtls'.test_nearest_method({ config = { console = 'console' }})<CR>",
+		-- 		"Test Method (without Maven)",
+		-- 	},
+		-- 	T = {
+		-- 		"<Cmd>lua require'jdtls'.test_class({ config = { console = 'console' }})<CR>",
+		-- 		"Test Class (without Maven)",
+		-- 	},
+		-- 	u = { "<Cmd>JdtUpdateConfig<CR>", "Update Config" },
+		-- 	d = { "<Cmd>JdtRefreshDebugConfigs<CR>", "Refresh debug config" },
+		-- 	r = { "<Cmd>Jaq<CR>", "Execute Java" },
+		-- 	R = { "<cmd>JdtWipeDataAndRestart<cr>", "Wipe project data and Restart server" },
+		-- 	x = { "<cmd>JdtRestart<cr>", "Restart server" },
+		-- 	v = { "<cmd>JdtSetRuntime<cr>", "Set runtime" },
+		-- 	s = {
+		-- 		":lua require('jdtls').setup_dap({ hotcodereplace = 'auto' })<cr>; :lua require'jdtls.dap'.setup_dap_main_class_configs()<cr>",
+		-- 		"Setup DAP Debugger",
+		-- 	},
+		-- },
 
 		s = {
 			name = "Search String",

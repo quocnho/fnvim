@@ -90,6 +90,10 @@ editor["phaazon/hop.nvim"] = {
 	event = "BufReadPost",
 	config = require("editor.hop"),
 }
+editor["luukvbaal/stabilize.nvim"] = {
+	lazy = true,
+	event = "BufReadPost",
+}
 editor["RRethy/vim-illuminate"] = {
 	lazy = true,
 	event = { "CursorHold", "CursorHoldI" },
@@ -98,6 +102,13 @@ editor["RRethy/vim-illuminate"] = {
 editor["romainl/vim-cool"] = {
 	lazy = true,
 	event = { "CursorMoved", "InsertEnter" },
+}
+editor["windwp/nvim-spectre"] = {
+	lazy = true,
+	module = "spectre",
+	config = function()
+		require("spectre").setup()
+	end,
 }
 editor["lambdalisue/suda.vim"] = {
 	lazy = true,
